@@ -662,6 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031811845}
   - component: {fileID: 1031811844}
+  - component: {fileID: 1031811846}
   m_Layer: 0
   m_Name: Exploder
   m_TagString: Untagged
@@ -681,9 +682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0511880118a4aef46a54c79156ee845e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionForce: 10
-  _explosionRadius: 5
-  _upwardModifier: 0.5
+  _explodeEffector: {fileID: 1031811846}
+  _explosionForce: 1
+  _explosionRadius: 10
+  _upwardModifier: 0.2
 --- !u!4 &1031811845
 Transform:
   m_ObjectHideFlags: 0
@@ -699,6 +701,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031811846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031811843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f3c5767ac0e244db2e523f68b42b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionEffectPrefab: {fileID: 19800004, guid: f01c184f9fae450438ad959021e195fb, type: 3}
 --- !u!1 &1053552193
 GameObject:
   m_ObjectHideFlags: 0

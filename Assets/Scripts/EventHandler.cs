@@ -16,23 +16,17 @@ public class EventHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _raycaster.CubeHit += HandleHit;
+        _raycaster.CubeHit += Hit;
     }
 
     private void OnDisable()
     {
-        _raycaster.CubeHit -= HandleHit;
+        _raycaster.CubeHit -= Hit;
     }
 
-    private void HandleHit(Cube cube)
-    {
-        StartCoroutine(HitCoroutine(cube));
-    }
-
-    private IEnumerator HitCoroutine(Cube cube)
+    private void Hit(Cube cube)
     {
         float random = UnityEngine.Random.value;
-        float delay = 0.2f;
 
         if (random <= _splitChance)
         {
@@ -43,8 +37,6 @@ public class EventHandler : MonoBehaviour
             if (_spawner != null && cube.ColorChanger != null)
             {
                 Cube[] newCubes = _spawner.Spawn(cube.transform.position, cube.transform.localScale, _minNewCubes, _maxNewCubes, cube.ColorChanger, cubeRigidbody.mass);
-
-                yield return new WaitForSeconds(delay);
 
                 if (_exploder != null)
                 {

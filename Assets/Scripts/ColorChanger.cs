@@ -6,7 +6,7 @@ public class ColorChanger : MonoBehaviour
     {
         if (renderer != null)
         {
-            renderer.material.color = new Color(Random.value, Random.value, Random.value);
+            renderer.material.color = Random.ColorHSV();
         }
     }
 }
