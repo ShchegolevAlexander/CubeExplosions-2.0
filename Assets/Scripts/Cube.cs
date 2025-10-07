@@ -26,14 +26,6 @@ public class Cube : MonoBehaviour
         }
     }
 
-    public void SetMass(float mass)
-    {
-        if (_rigidbody != null)
-        {
-            _rigidbody.mass = mass;
-        }
-    }
-
     public void SetColorChanger(ColorChanger colorChanger)
     {
         _colorChanger = colorChanger;

@@ -13,6 +13,7 @@ public class EventHandler : MonoBehaviour
 
     private float _splitChance = 1f;
     private int _halver = 2;
+    private float _explosionForceMultuplier = 1f;
 
     private void OnEnable()
     {
@@ -32,11 +33,9 @@ public class EventHandler : MonoBehaviour
         {
             _splitChance /= _halver;
 
-            Rigidbody cubeRigidbody = cube.Rigidbody;
-
             if (_spawner != null && cube.ColorChanger != null)
             {
-                Cube[] newCubes = _spawner.Spawn(cube.transform.position, cube.transform.localScale, _minNewCubes, _maxNewCubes, cube.ColorChanger, cubeRigidbody.mass);
+                Cube[] newCubes = _spawner.Spawn(cube.transform.position, cube.transform.localScale, _minNewCubes, _maxNewCubes, cube.ColorChanger);
 
                 if (_exploder != null)
                 {
@@ -47,7 +46,7 @@ public class EventHandler : MonoBehaviour
                         newRigidbodies[i] = newCubes[i].Rigidbody;
                     }
 
-                    _exploder.Explode(newRigidbodies);
+                    _exploder.Explode(newRigidbodies, cube.transform.localScale.x * _explosionForceMultuplier);
                 }
             }
         }

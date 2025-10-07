@@ -8,7 +8,7 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _explosionRadius = 5f;
     [SerializeField] private float _upwardModifier = 0.5f;
 
-    public void Explode(Rigidbody[] rigidbodies)
+    public void Explode(Rigidbody[] rigidbodies, float forceMultiplier)
     {
         if (rigidbodies == null && rigidbodies.Length == 0)
             return;
@@ -18,7 +18,7 @@ public class Exploder : MonoBehaviour
             if (rigidbody == null)
                 continue;
 
-            rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upwardModifier, ForceMode.Impulse);
+            rigidbody.AddExplosionForce(_explosionForce * forceMultiplier, transform.position, _explosionRadius, _upwardModifier, ForceMode.Impulse);
         }
     }
 
